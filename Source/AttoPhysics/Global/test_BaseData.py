@@ -1,6 +1,4 @@
-from asyncio.windows_events import NULL
 from BaseDataHelper import BaseDataHelper
-
 
 def test_filepath():
     path ="/Data/"
