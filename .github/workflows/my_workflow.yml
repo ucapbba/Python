@@ -14,6 +14,4 @@ jobs:
       run : pip install pytest
       
     - name : Run tests 
-      run : pytest Source/test.py
-      run : pytest Source/AttoPhysics/Global/test_BaseData.py
       run : pytest Source/AttoPhysics/TrajectoryPlotter/test_TrajData.py
