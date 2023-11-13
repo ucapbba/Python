@@ -13,5 +13,10 @@ jobs:
     - name : Install Packages 
       run : pip install pytest
       
-    - name : Run tests 
-      run : pytest Source/AttoPhysics/TrajectoryPlotter/test_TrajData.py
+    - name: Install sciPy dependencies
+      run:  pip install pandas
+      
+    - name : Run unit tests 
+      run : |
+        pytest Source/AttoPhysics/TrajectoryPlotter/test_TrajData.py
+        pytest Source/AttoPhysics/Global/test_BaseData.py
