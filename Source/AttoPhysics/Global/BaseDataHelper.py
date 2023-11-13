@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 import numpy as np
 import pandas as pd
 
@@ -7,7 +6,7 @@ class BaseDataHelper:
     def __init__(self, _path, _fname):
         self.path = _path
         self.filename = _fname
-        self.myDataFrame = NULL
+        self.myDataFrame = 0
     
     def GetFilePath(self):
         return self.path+self.filename;
