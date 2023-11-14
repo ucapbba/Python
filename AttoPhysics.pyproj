@@ -5,8 +5,7 @@
     <ProjectGuid>511734af-1101-43e3-8555-86624a3ee8c1</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>
-    </StartupFile>
+    <StartupFile>Source\Plotters\Plot_Trajectories.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
