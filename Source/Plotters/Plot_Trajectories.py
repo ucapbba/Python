@@ -7,12 +7,12 @@ cwd = os.getcwd()
 path = '/Data/'
 filename = 'Binned_Initial_Condition_Grid_trunc'
 helper = TrajDataHelper(path, filename)
-
-print("Loading and manipulating data......")
+print("Loading to array....")
+helper.LoadToArray()
+array = helper.GetArray()
 helper.CreateDataFrame()
 helper.AssignColumnNames()
 helper.FilterByOrbit(1)
-print("Done")
 
 '''print("plotting scatter plot")
 plotter = BasePlotter(helper)

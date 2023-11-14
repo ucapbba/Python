@@ -1,5 +1,7 @@
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.colors import LogNorm
+import matplotlib
 
 
 class BasePlotter():
@@ -37,4 +39,20 @@ class BasePlotter():
         ax1.set_xlabel(col1, fontsize=fontsize)
         ax1.set_ylabel(col2, fontsize=fontsize)
         ax2.set_xlabel(col3, fontsize=fontsize)
+        plt.show()
+
+    def PlotColourMesh(self):
+        font = {'family': 'serif',
+                'weight': 'normal',
+                'size': 30}
+        matplotlib.rc('font', **font)  # increase all font size
+        fig, ax = plt.subplots(1, 1, figsize=(14, 8))
+        XRESI = self.helper.XRESI
+        YRESI = self.helper.YRESI
+        ZRESI = self.helper.ZRESI
+        _min = self.helper.min
+        _max = self.helper.max
+        ax.pcolormesh(XRESI, YRESI, ZRESI, norm=LogNorm(vmin=_min, vmax=_max),\
+                      rasterized=True, shading='gouraud')
+        plt.axis('off')
         plt.show()

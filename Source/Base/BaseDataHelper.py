@@ -1,5 +1,4 @@
 import numpy as np
-import pandas as pd
 
 
 class BaseDataHelper:
@@ -8,17 +7,16 @@ class BaseDataHelper:
         self.path = _path
         self.filename = _fname
         self.myDataFrame = 0
+        self.myArray = 0
 
     def GetFilePath(self):
-        return self.path+self.filename
+        return self.path + self.filename
 
-    def CreateDataFrame(self):
+    def LoadToArray(self):
         import os
         cwd = os.getcwd()
         filePath = BaseDataHelper.GetFilePath(self)
-        array = np.loadtxt(cwd+filePath)
-        df = pd.DataFrame(array)
-        self.myDataFrame = df
+        self.myArray = np.loadtxt(cwd + filePath)
 
-    def GetDataFrame(self):
-        return self.myDataFrame
+    def GetArray(self):
+        return self.myArray

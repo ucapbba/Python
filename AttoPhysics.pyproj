@@ -5,7 +5,7 @@
     <ProjectGuid>511734af-1101-43e3-8555-86624a3ee8c1</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Source\Plotters\Plot_Trajectories.py</StartupFile>
+    <StartupFile>Source\Plotters\ContourPlot\MomDistPlotter.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,6 +25,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="Source\Plotters\ContourPlot\" />
     <Folder Include="Tests\" />
     <Folder Include="Source\" />
     <Folder Include="Source\Base\" />
@@ -36,10 +37,17 @@
   <ItemGroup>
     <Compile Include="Source\Base\BaseDataHelper.py" />
     <Compile Include="Source\Base\BasePlotter.py" />
+    <Compile Include="Source\Plotters\ContourPlot\ContourDataHelper.py" />
+    <Compile Include="Source\Plotters\ContourPlot\MomDistPlotter.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Source\Plotters\Plot_Trajectories.py" />
     <Compile Include="Source\Plotters\TrajDataHelper.py" />
     <Compile Include="Tests\test_Base.py" />
-    <Compile Include="Tests\test_Plotters.py" />
+    <Compile Include="Tests\test_ContourData.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Tests\test_TrajData.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

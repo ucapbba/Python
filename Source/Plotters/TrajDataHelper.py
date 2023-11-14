@@ -1,4 +1,5 @@
 from Source.Base.BaseDataHelper import BaseDataHelper
+import pandas as pd
 
 
 class TrajDataHelper(BaseDataHelper):
@@ -15,6 +16,13 @@ class TrajDataHelper(BaseDataHelper):
         self.z0 = 'z0'
         self.usePoint = 'usePoint'
 
+    def CreateDataFrame(self):
+        self.LoadToArray()
+        df = pd.DataFrame(self.myArray)
+        self.myDataFrame = df
+
+    def GetDataFrame(self):
+        return self.myDataFrame
 
     def AssignColumnNames(self):
         self.myDataFrame.columns = [self.p0, self.p0_perp, self.t0_re, self.t0_im,\

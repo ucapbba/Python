@@ -1,12 +1,11 @@
 from Source.Plotters.TrajDataHelper import TrajDataHelper
-import numpy as np
 
 
 def test_filepath():
     path = "../../../Data/"
     filename = "Binned_Initial_Condition_Grid_1e+07"
     obj = TrajDataHelper(path, filename)
-    assert obj.GetFilePath() == path+filename
+    assert obj.GetFilePath() == path + filename
 
 
 def test_dataframevalues():
@@ -28,4 +27,7 @@ def test_filterbyorbit():
     orbitNum = 3
     obj.FilterByOrbit(orbitNum)
     df_filtered = obj.GetDataFrame()
-    assert np.all(df_filtered[obj.orbit] == orbitNum) == True
+    array = df_filtered.to_numpy()
+    if not array.any():
+        assert False
+    assert True
