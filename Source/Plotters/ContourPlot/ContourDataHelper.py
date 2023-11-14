@@ -3,7 +3,7 @@ import numpy as np
 
 
 class ContourDataHelper(BaseDataHelper):
-    """For importing and manipulating file data in trajectory plotter"""
+    """For importing and manipulating file data in contour plotter"""
     def __init__(self, _path, _fname, _xRange, _yRange, _min, _max):
         BaseDataHelper.__init__(self, _path, _fname)
         self.xRange = _xRange

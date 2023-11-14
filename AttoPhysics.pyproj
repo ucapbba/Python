@@ -5,7 +5,7 @@
     <ProjectGuid>511734af-1101-43e3-8555-86624a3ee8c1</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Source\Plotters\ContourPlot\MomDistPlotter.py</StartupFile>
+    <StartupFile>Source\MachineLearning\ARC\Predict_Assym.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,6 +25,8 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="Source\MachineLearning\" />
+    <Folder Include="Source\MachineLearning\ARC\" />
     <Folder Include="Source\Plotters\ContourPlot\" />
     <Folder Include="Tests\" />
     <Folder Include="Source\" />
@@ -37,12 +39,20 @@
   <ItemGroup>
     <Compile Include="Source\Base\BaseDataHelper.py" />
     <Compile Include="Source\Base\BasePlotter.py" />
+    <Compile Include="Source\MachineLearning\ARC\ImageCalculators.py" />
+    <Compile Include="Source\MachineLearning\ARC\Predict_Assym.py" />
+    <Compile Include="Source\MachineLearning\ARC\ImageClassifierHelper.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Source\Plotters\ContourPlot\ContourDataHelper.py" />
-    <Compile Include="Source\Plotters\ContourPlot\MomDistPlotter.py">
+    <Compile Include="Source\Plotters\ContourPlot\Plot_Contour.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Source\Plotters\Plot_Trajectories.py" />
     <Compile Include="Source\Plotters\TrajDataHelper.py" />
+    <Compile Include="Tests\test_AsymCalc.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Tests\test_Base.py" />
     <Compile Include="Tests\test_ContourData.py">
       <SubType>Code</SubType>
