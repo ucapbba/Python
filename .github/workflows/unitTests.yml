@@ -21,3 +21,4 @@ jobs:
         pytest Tests/test_TrajData.py
         pytest Tests/test_Base.py
         pytest Tests/test_ContourData.py
+        pytest Tests/test_AsymCalc.py
