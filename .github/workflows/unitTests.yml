@@ -11,12 +11,12 @@ jobs:
       uses : actions/checkout@v2
       
     - name : Install Packages 
-      run : pip install pytest
-      
-    - name: Install sciPy dependencies
-      run:  pip install pandas
+      run : |
+        pip install pytest
+        pip install pandas
+        pip install numpy
       
     - name : Run unit tests 
       run : |
-        pytest Source/AttoPhysics/TrajectoryPlotter/test_TrajData.py
-        pytest Source/AttoPhysics/Global/test_BaseData.py
+        pytest Tests/test_Plotters.py
+        pytest Tests/test_Base.py

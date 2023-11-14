@@ -3,16 +3,19 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>511734af-1101-43e3-8555-86624a3ee8c1</ProjectGuid>
-    <ProjectHome>.</ProjectHome>
-    <StartupFile>Source\AttoPhysics\TrajectoryPlotter\Plot_Trajectories.py</StartupFile>
+    <ProjectHome>
+    </ProjectHome>
+    <StartupFile>
+    </StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
-    <Name>Python</Name>
+    <Name>AttoPhysics</Name>
     <RootNamespace>Python</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
     <InterpreterId>Global|ContinuumAnalytics|Anaconda38-64</InterpreterId>
+    <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,32 +26,21 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Source\AttoPhysics\Global\BaseDataHelper.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Source\AttoPhysics\Global\test_BaseData.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Source\AttoPhysics\TrajectoryPlotter\PlotTrajDataHelper.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Source\AttoPhysics\TrajectoryPlotter\Plot_Trajectories.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Source\AttoPhysics\TrajectoryPlotter\test_TrajData.py">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Source\test.py" />
-    <Compile Include="Source\Wallet.py" />
-  </ItemGroup>
-  <ItemGroup>
+    <Folder Include="Tests\" />
     <Folder Include="Source\" />
-    <Folder Include="Source\AttoPhysics\" />
-    <Folder Include="Source\AttoPhysics\Global\" />
-    <Folder Include="Source\AttoPhysics\TrajectoryPlotter\" />
+    <Folder Include="Source\Base\" />
+    <Folder Include="Source\Plotters\" />
   </ItemGroup>
   <ItemGroup>
     <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda38-64" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Source\Base\BaseDataHelper.py" />
+    <Compile Include="Source\Base\BasePlotter.py" />
+    <Compile Include="Source\Plotters\Plot_Trajectories.py" />
+    <Compile Include="Source\Plotters\TrajDataHelper.py" />
+    <Compile Include="Tests\test_Base.py" />
+    <Compile Include="Tests\test_Plotters.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in
