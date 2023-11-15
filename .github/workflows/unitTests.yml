@@ -15,7 +15,6 @@ jobs:
         pip install pytest
         pip install pandas
         pip install numpy
-        pip install sklearn
         pip install scikit-learn scipy matplotlib
       
     - name : Run unit tests 
