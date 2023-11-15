@@ -5,19 +5,18 @@ import os
 cwd = os.getcwd()
 
 path = '/Data/'
-filename = 'Binned_Initial_Condition_Grid_trunc'
+filename = 'Binned_Initial_Condition_Grid_trunc1'
 helper = TrajDataHelper(path, filename)
 print("Loading to array....")
 helper.LoadToArray()
-array = helper.GetArray()
 helper.CreateDataFrame()
 helper.AssignColumnNames()
-helper.FilterByOrbit(1)
+# helper.FilterByOrbit(4)
 
-'''print("plotting scatter plot")
+print("plotting scatter plot")
 plotter = BasePlotter(helper)
-plotter.plotScatter(helper.p0,helper.p0_perp,"Initial Momentum",10)
-print("Done")'''
+plotter.plotScatter(helper.p0, helper.p0_perp, "Initial Momentum", 10)
+print("Done")
 
 print("plotting scatter plot")
 plotter = BasePlotter(helper)

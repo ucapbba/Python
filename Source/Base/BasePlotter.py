@@ -9,18 +9,22 @@ class BasePlotter():
     def __init__(self, _helper):
         self.helper = _helper
 
-    def plotScatter(self, col1, col2, title="", fontsize=15):
+    def plotScatter(self, col1, col2, title="", fontsize=15, pointsize=0.001):
         df = self.helper.GetDataFrame()
+        dfOrbit = df[self.helper.orbit]
         Xarray = np.asarray(df[col1])
         Yarray = np.asarray(df[col2])
-        fig = plt.figure()
+        fig, ax = plt.subplots()
         fig.canvas.set_window_title(title + " plot")
         plt.title(title, fontsize=fontsize)
         plt.xlabel(col1, fontsize=fontsize)
         plt.ylabel(col2, fontsize=fontsize)
-        plt.xticks(fontsize=15)
-        plt.yticks(fontsize=15)
-        plt.scatter(Xarray, Yarray)
+        plt.xticks(fontsize=fontsize)
+        plt.yticks(fontsize=fontsize)
+        scatter = ax.scatter(Xarray, Yarray, c=dfOrbit, s=pointsize)
+        legend1 = ax.legend(*scatter.legend_elements(),\
+                            loc="upper left", title="Orbit")
+        ax.add_artist(legend1)
         plt.show()
 
     def plot2Scatter(self, col1, col2, col3, col4, title="", fontsize=15):

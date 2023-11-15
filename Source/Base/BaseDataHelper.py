@@ -18,5 +18,9 @@ class BaseDataHelper:
         filePath = BaseDataHelper.GetFilePath(self)
         self.myArray = np.loadtxt(cwd + filePath)
 
+    def TruncateArray(self, size):
+        newArray = self.myArray[:size]
+        self.myArray = newArray
+
     def GetArray(self):
         return self.myArray

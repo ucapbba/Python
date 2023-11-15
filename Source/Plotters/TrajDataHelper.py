@@ -17,7 +17,6 @@ class TrajDataHelper(BaseDataHelper):
         self.usePoint = 'usePoint'
 
     def CreateDataFrame(self):
-        self.LoadToArray()
         df = pd.DataFrame(self.myArray)
         self.myDataFrame = df
 
@@ -32,3 +31,17 @@ class TrajDataHelper(BaseDataHelper):
     def FilterByOrbit(self, orbit):
         df = self.myDataFrame
         self.myDataFrame = df.loc[df[self.orbit] == orbit]
+
+    def PrintAllOrbitsInfo(self):
+        df = self.myDataFrame
+        orbits = []
+        orbits.append(df.loc[df[self.orbit] == 1])
+        orbits.append(df.loc[df[self.orbit] == 2])
+        orbits.append(df.loc[df[self.orbit] == 3])
+        orbits.append(df.loc[df[self.orbit] == 4])
+        orbitsSize = df[self.p0].size
+        for orbit in range(1, 5):
+            orbitSize = orbits[orbit - 1][self.p0].size
+            percentage = orbitSize / orbitsSize * 100
+            txt = "Orbit " + str(orbit) + " size: " + str(orbitSize) + " of " + str(orbitsSize) + " total = {value:.2f} %"
+            print(txt.format(value=percentage))
