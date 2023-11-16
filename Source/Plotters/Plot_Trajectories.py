@@ -1,9 +1,6 @@
 from Source.Base.BasePlotter import BasePlotter
 from Source.Plotters.TrajDataHelper import TrajDataHelper
 
-import os
-cwd = os.getcwd()
-
 path = '/Data/'
 filename = 'Binned_Initial_Condition_Grid_trunc1'
 helper = TrajDataHelper(path, filename)

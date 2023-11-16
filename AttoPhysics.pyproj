@@ -28,6 +28,7 @@
     <Folder Include="Source\MachineLearning\" />
     <Folder Include="Source\MachineLearning\ARC\" />
     <Folder Include="Source\MachineLearning\Clustering\" />
+    <Folder Include="Source\MachineLearning\Regression\" />
     <Folder Include="Source\Plotters\ContourPlot\" />
     <Folder Include="Tests\" />
     <Folder Include="Source\" />
@@ -47,6 +48,12 @@
     </Compile>
     <Compile Include="Source\MachineLearning\Clustering\ClusteringHelper.py" />
     <Compile Include="Source\MachineLearning\Clustering\RunClustering.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Source\MachineLearning\Regression\ModelAnalyser.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Source\MachineLearning\Regression\RunRegression.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Source\Plotters\ContourPlot\ContourDataHelper.py" />
