@@ -8,10 +8,10 @@ import matplotlib
 
 class BasePlotter():
     """Generic base plotting functions"""
-    def __init__(self, _helper : BaseDataHelper):
+    def __init__(self, _helper: BaseDataHelper):
         self.helper = _helper
 
-    def plotScatter(self, col1 : string, col2 : string, title="", fontsize=15, pointsize=0.001):
+    def plotScatter(self, col1: string, col2: string, title="", fontsize=15, pointsize=0.001):
         df = self.helper.GetDataFrame()
         dfOrbit = df[self.helper.orbit]
         Xarray = np.asarray(df[col1])
@@ -29,7 +29,7 @@ class BasePlotter():
         ax.add_artist(legend1)
         plt.show()
 
-    def plot2Scatter(self, col1 : string, col2 : string, col3 :string, col4 : string, title="", fontsize=15):
+    def plot2Scatter(self, col1: string, col2: string, col3: string, col4: string, title="", fontsize=15):
         df = self.helper.GetDataFrame()
         Xarray = np.asarray(df[col1])
         Yarray = np.asarray(df[col2])

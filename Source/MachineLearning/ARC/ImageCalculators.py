@@ -1,12 +1,15 @@
 import os
+import string
+from numpy import void
 from numpy.lib import math
-from ImageClassifierHelper import ImageClassifierHelper
+from Source.MachineLearning.ARC.ImageClassifierHelper import ImageClassifierHelper
 from Source.Base.BaseDataHelper import BaseDataHelper
 from Source.Plotters.ContourPlot.ContourDataHelper import ContourDataHelper
+from typing import List
 
 
 class AsymCalculator(object):
-    def __init__(self, _path, _jobNum, _minTask, _maxTask, _xrange, _yrange):
+    def __init__(self, _path: string, _jobNum: string, _minTask: int, _maxTask: int, _xrange: int, _yrange: int):
         self.path = _path
         self.jobNum = _jobNum
         self.minTask = _minTask
@@ -14,14 +17,14 @@ class AsymCalculator(object):
         self.xRange = _xrange
         self.yRange = _yrange
 
-    def CalculateAssymetries(self):
+    def CalculateAsymmetries(self) -> void:
         filePaths = self.getFilePaths()
         asym = []
         for filepath in filePaths:
             print(" processing file " + filepath.filename)
             contourHelper = ContourDataHelper(filepath.path, filepath.filename, self.xRange, self.yRange, 0, 0)
             contourHelper.LoadToArray()
-            contourHelper.CreateArrays(7)
+            contourHelper.CreateArray(7)
             thisasym = self.CalcualteAsymmetry(contourHelper.ZRESI)
             helper = ImageClassifierHelper(filepath.path, filepath.filename)
             imageValues = helper.GetValuesFromFilename()
@@ -29,7 +32,7 @@ class AsymCalculator(object):
             asym.append(imageValues)
         return asym
 
-    def getFilePaths(self):
+    def getFilePaths(self) -> List[BaseDataHelper]:
         filePaths = []
         cwd = os.getcwd()
         for task in range(self.minTask, self.maxTask):
@@ -47,7 +50,7 @@ class AsymCalculator(object):
                     filePaths.append(baseData)
         return filePaths
 
-    def CalcualteAsymmetry(self, amplitudeValues):
+    def CalcualteAsymmetry(self, amplitudeValues) -> float:
         rhsSum = 0
         lhsSum = 0
         lineSum = 0

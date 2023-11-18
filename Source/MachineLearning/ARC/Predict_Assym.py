@@ -9,6 +9,6 @@ minTask = 10
 maxTask = 14
 
 calc = AsymCalculator(path, jobNum, minTask, maxTask, xRange, yRange)
-variables = calc.CalculateAssymetries()
+variables = calc.CalculateAsymmetries()
 for var in variables:
     print(str(var.w2) + " " + str(var.Idiff) + " " + str(var.asym))

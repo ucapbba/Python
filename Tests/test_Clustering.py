@@ -1,6 +1,7 @@
 from Source.MachineLearning.Clustering.ClusteringHelper import ClusteringHelper
 import numpy as np
 
+
 def test_RunClustering():
     path = '/Data/'
     filename = 'Binned_Initial_Condition_Grid_trunc1'
@@ -16,10 +17,11 @@ def test_RunClustering():
     orbitColumn = df[helper.orbit]
     assert orbitColumn.iloc[46] == 2
 
+
 def test_UniqueElements():
     path = '/Data/'
     filename = 'Binned_Initial_Condition_Grid_trunc1'
     helper = ClusteringHelper(path, filename)
-    someArray = np.array([1,2,3,4,4,4,4,5,5,5,6,6,6,6])
+    someArray = np.array([1, 2, 3, 4, 4, 4, 4, 5, 5, 5, 6, 6, 6, 6])
     unique = helper.uniqueElements(someArray)
     assert unique == 6

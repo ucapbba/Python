@@ -43,5 +43,6 @@ class TrajDataHelper(BaseDataHelper):
         for orbit in range(1, 5):
             orbitSize = orbits[orbit - 1][self.p0].size
             percentage = orbitSize / orbitsSize * 100
-            txt = "Orbit " + str(orbit) + " size: " + str(orbitSize) + " of " + str(orbitsSize) + " total = {value:.2f} %"
+            txt = "Orbit " + str(orbit) + " size: " + str(orbitSize) + " of " \
+                + str(orbitsSize) + " total = {value:.2f} %"
             print(txt.format(value=percentage))

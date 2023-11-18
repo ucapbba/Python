@@ -18,7 +18,7 @@ def test_createarrays():
     filename = "Amplitude_Grid_w2_1_1000_phi_0.025_750X750.dat"
     obj = ContourDataHelper(path, filename, xRange, yRange, _min, _max)
     obj.LoadToArray()
-    obj.CreateArrays(7)
+    obj.CreateArray(7)
     XRESI = obj.XRESI
     YRESI = obj.YRESI
     ZRESI = obj.ZRESI
