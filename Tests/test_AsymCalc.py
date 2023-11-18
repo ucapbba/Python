@@ -41,7 +41,7 @@ def test_GeARCDATAFilePath():
     path, jobNum, minTask, maxTask, xRange, yRange = GetPathDetailsForTest()
     helper = AsymCalculator(path, jobNum, minTask, maxTask, xRange, yRange)
     filePaths = helper.getFilePaths()
-    assert len(filePaths) is 1
+    assert len(filePaths) == 1
     filePath = filePaths[0].GetFilePath()
     thePath = '/Data/140603.10/Data/Amplitude_Grid_w2_1_1000_phi_0.025_750X750.dat'
     assert filePath == thePath
