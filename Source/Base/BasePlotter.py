@@ -47,10 +47,10 @@ class BasePlotter():
         ax2.set_xlabel(col3, fontsize=fontsize)
         plt.show()
 
-    def PlotColourMesh(self):
+    def PlotColourMesh(self, title=""):
         font = {'family': 'serif',
                 'weight': 'normal',
-                'size': 30}
+                'size': 10}
         matplotlib.rc('font', **font)  # increase all font size
         fig, ax = plt.subplots(1, 1, figsize=(14, 8))
         XRESI = self.helper.XRESI
@@ -60,5 +60,6 @@ class BasePlotter():
         _max = self.helper.max
         ax.pcolormesh(XRESI, YRESI, ZRESI, norm=LogNorm(vmin=_min, vmax=_max),\
                       rasterized=True, shading='gouraud')
+        ax.set(title=title)
         plt.axis('off')
         plt.show()

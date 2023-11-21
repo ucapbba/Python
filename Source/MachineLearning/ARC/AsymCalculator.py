@@ -2,40 +2,60 @@ import os
 import string
 from numpy import void
 from numpy.lib import math
-from Source.MachineLearning.ARC.ImageClassifierHelper import ImageClassifierHelper
+from Source.MachineLearning.ARC.ImageClassifierHelper import ImageClassifierHelper, Values_Map
 from Source.Base.BaseDataHelper import BaseDataHelper
+from Source.Base.BasePlotter import BasePlotter
 from Source.Plotters.ContourPlot.ContourDataHelper import ContourDataHelper
 from typing import List
 
 
 class AsymCalculator(object):
-    def __init__(self, _path: string, _jobNum: string, _minTask: int, _maxTask: int, _xrange: int, _yrange: int):
+    helpers: List[ContourDataHelper] = []
+    asymList: List[Values_Map] = []
+
+    def __init__(self, _path: string, _jobNum: string, _minTask: int, _maxTask: int,\
+                 _xrange: int, _yrange: int, _min: float, _max: float):
         self.path = _path
         self.jobNum = _jobNum
         self.minTask = _minTask
         self.maxTask = _maxTask
         self.xRange = _xrange
         self.yRange = _yrange
+        self.min = _min
+        self.max = _max
 
-    def CalculateAsymmetries(self) -> void:
+    def CreateContourHelpers(self) -> void:
         filePaths = self.getFilePaths()
-        asym = []
         for filepath in filePaths:
             print(" processing file " + filepath.filename)
-            contourHelper = ContourDataHelper(filepath.path, filepath.filename, self.xRange, self.yRange, 0, 0)
+            contourHelper = ContourDataHelper(filepath.path, filepath.filename, self.xRange, self.yRange,\
+                                              self.min, self.max)
             contourHelper.LoadToArray()
             contourHelper.CreateArray(7)
+            # contourHelper.Normalise() leads to 0s due to erroneaous very large numbers
+            self.helpers.append(contourHelper)
+
+    def CalculateAsymmetries(self) -> void:
+        if len(self.helpers) == 0:
+            print("Contour Helpers not populated!!")
+            return
+        for contourHelper in self.helpers:
             thisasym = self.CalcualteAsymmetry(contourHelper.ZRESI)
-            helper = ImageClassifierHelper(filepath.path, filepath.filename)
+            helper = ImageClassifierHelper(contourHelper.path, contourHelper.filename)
             imageValues = helper.GetValuesFromFilename()
             imageValues.asym = thisasym
-            asym.append(imageValues)
-        return asym
+            self.asymList.append(imageValues)
+
+    def plotColourMeshAsym(self) -> void:
+        for value, helper in zip(self.asymList, self.helpers):
+            plotter = BasePlotter(helper)
+            plotter.PlotColourMesh("w2 = " + str(value.w2) + " Idiff = " + str(value.Idiff)\
+                                   + " phi = " + str(value.phi) + " asym = " + str(value.asym))
 
     def getFilePaths(self) -> List[BaseDataHelper]:
         filePaths = []
         cwd = os.getcwd()
-        for task in range(self.minTask, self.maxTask):
+        for task in range(self.minTask, self.maxTask + 1):
             path = self.path + str(self.jobNum) + '.' + str(task) + '/Data/'
             fullPath = cwd + path
             if not os.path.exists(fullPath):
