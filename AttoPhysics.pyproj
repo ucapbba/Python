@@ -5,7 +5,7 @@
     <ProjectGuid>511734af-1101-43e3-8555-86624a3ee8c1</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Source\MachineLearning\ARC\Calc_Assym.py</StartupFile>
+    <StartupFile>Source\MachineLearning\ARC\Model_Asym.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -44,7 +44,7 @@
     <Compile Include="Source\MachineLearning\ARC\AsymCalculatorIO.py" />
     <Compile Include="Source\MachineLearning\ARC\AsymCalculator.py" />
     <Compile Include="Source\MachineLearning\ARC\Calc_Assym.py" />
-    <Compile Include="Source\MachineLearning\ARC\ImageClassifierHelper.py">
+    <Compile Include="Source\MachineLearning\ARC\AsymDataHelper.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Source\MachineLearning\ARC\Model_Asym.py" />
@@ -55,6 +55,7 @@
     <Compile Include="Source\MachineLearning\Regression\ModelAnalyser.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Source\MachineLearning\Regression\ModelAnalyserIO.py" />
     <Compile Include="Source\MachineLearning\Regression\RunRegression.py">
       <SubType>Code</SubType>
     </Compile>

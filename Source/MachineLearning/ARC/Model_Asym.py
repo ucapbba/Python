@@ -1,9 +1,23 @@
-from Source.Base.BaseDataHelper import BaseDataHelper
+from Source.MachineLearning.ARC.AsymDataHelper import AsymDataHelper
+from sklearn.linear_model import SGDClassifier
+
+from Source.MachineLearning.Regression.ModelAnalyser import ModelAnalyser
 
 path = '/Data/job/'
 jobNum = 41044
 filename = 'varAsymm_' + str(jobNum) + '_.out'
-helper = BaseDataHelper(path, filename)
+helper = AsymDataHelper(path, filename)
 helper.LoadToArray()
-array = helper.GetArray()
-print(array[0])
+helper.CreateDataFrame()
+helper.AssignColumnNames()
+
+print("Running Analyser....")
+models = [SGDClassifier()]
+testSize = 0.25
+analyser = ModelAnalyser(helper, models, testSize)
+# analyser.CompareModels() Issues on type
+
+# print("Output Results...")
+# analyserIO = ModelAnalyserIO(analyser)
+# analyserIO.printDataStructureToScreen()
+# analyserIO.printModelPerformanceToScreen()

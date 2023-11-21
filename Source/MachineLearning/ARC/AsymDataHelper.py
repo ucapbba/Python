@@ -10,9 +10,28 @@ class Values_Map(BaseDataHelper):
         self.asym = _asym
 
 
-class ImageClassifierHelper(BaseDataHelper):
+class AsymDataHelper(BaseDataHelper):
     def __init__(self, _path, _fname):
         BaseDataHelper.__init__(self, _path, _fname)
+        self.w2 = 'w2'
+        self.Idiff = 'Idiff'
+        self.phi = 'phi'
+        self.asym = 'asym'
+
+    def AssignColumnNames(self):
+        self.myDataFrame.columns = [self.w2, self.Idiff, self.phi, self.asym]
+
+    def GetColumnsToDrop(self) -> list:
+        columnsToDrop = []
+        columnsToDrop.append(self.asym)
+        columnsToDrop.append(self.Idiff)
+        columnsToDrop.append(self.phi)
+        return columnsToDrop
+
+    def GetTargetColumns(self) -> list:
+        targetColumns = []
+        targetColumns.append(self.asym)
+        return targetColumns
 
     def GetValuesFromFilename(self):
         fname = self.filename

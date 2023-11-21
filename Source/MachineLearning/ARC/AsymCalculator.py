@@ -2,7 +2,7 @@ import os
 import string
 from numpy import void
 from numpy.lib import math
-from Source.MachineLearning.ARC.ImageClassifierHelper import ImageClassifierHelper, Values_Map
+from Source.MachineLearning.ARC.AsymDataHelper import AsymDataHelper, Values_Map
 from Source.Base.BaseDataHelper import BaseDataHelper
 from Source.Base.BasePlotter import BasePlotter
 from Source.Plotters.ContourPlot.ContourDataHelper import ContourDataHelper
@@ -41,7 +41,7 @@ class AsymCalculator(object):
             return
         for contourHelper in self.helpers:
             thisasym = self.CalcualteAsymmetry(contourHelper.ZRESI)
-            helper = ImageClassifierHelper(contourHelper.path, contourHelper.filename)
+            helper = AsymDataHelper(contourHelper.path, contourHelper.filename)
             imageValues = helper.GetValuesFromFilename()
             imageValues.asym = thisasym
             self.asymList.append(imageValues)
@@ -63,7 +63,7 @@ class AsymCalculator(object):
                 continue
             for fileName in os.listdir(fullPath):
                 if os.path.isfile(os.path.join(fullPath, fileName)):
-                    helper = ImageClassifierHelper("", fileName)
+                    helper = AsymDataHelper("", fileName)
                     if helper.IsAmpGrid() is False:
                         continue
                     baseData = BaseDataHelper(path, fileName)

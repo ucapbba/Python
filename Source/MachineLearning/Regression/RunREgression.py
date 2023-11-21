@@ -1,13 +1,8 @@
+from Source.MachineLearning.Regression.ModelAnalyserIO import ModelAnalyserIO
 from Source.Plotters.TrajDataHelper import TrajDataHelper
 from Source.MachineLearning.Regression.ModelAnalyser import ModelAnalyser
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.tree import ExtraTreeClassifier
-from sklearn.ensemble import ExtraTreesClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.neural_network import MLPClassifier
-from sklearn.linear_model import RidgeClassifier
-from sklearn.linear_model import RidgeClassifierCV
 
 path = '/Data/'
 filename = 'Binned_Initial_Condition_Grid_trunc'
@@ -17,15 +12,13 @@ helper.LoadToArray()
 helper.CreateDataFrame()
 helper.AssignColumnNames()
 
-models = [DecisionTreeClassifier(), ExtraTreeClassifier(),
-          ExtraTreesClassifier(), KNeighborsClassifier(),
-          RandomForestClassifier()
-          ]
+print("Running Analyser....")
+models = [DecisionTreeClassifier(), ExtraTreeClassifier()]
+testSize = 0.25
+analyser = ModelAnalyser(helper, models, testSize)
+analyser.CompareModels()
 
-models_multilable = [MLPClassifier(),
-                     RidgeClassifier(),
-                     RidgeClassifierCV()]
-
-analyser = ModelAnalyser(helper)
-analyser.stats_compare_models(helper.GetDataFrame(), models, "stats_multiclass_multioutput.csv")
-analyser.stats_compare_models(helper.GetDataFrame(), models_multilable, "stats_multilabel.csv")
+print("Output Results...")
+analyserIO = ModelAnalyserIO(analyser)
+analyserIO.printDataStructureToScreen()
+analyserIO.printModelPerformanceToScreen()

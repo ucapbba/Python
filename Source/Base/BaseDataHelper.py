@@ -13,6 +13,13 @@ class BaseDataHelper:
         self.path = _path
         self.filename = _fname
 
+    def CreateDataFrame(self):
+        df = DataFrame(self.myArray)
+        self.myDataFrame = df
+
+    def GetDataFrame(self):
+        return self.myDataFrame
+
     def GetFilePath(self) -> string:
         return self.path + self.filename
 

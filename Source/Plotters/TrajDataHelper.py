@@ -1,5 +1,4 @@
 from Source.Base.BaseDataHelper import BaseDataHelper
-import pandas as pd
 
 
 class TrajDataHelper(BaseDataHelper):
@@ -16,17 +15,25 @@ class TrajDataHelper(BaseDataHelper):
         self.z0 = 'z0'
         self.usePoint = 'usePoint'
 
-    def CreateDataFrame(self):
-        df = pd.DataFrame(self.myArray)
-        self.myDataFrame = df
-
-    def GetDataFrame(self):
-        return self.myDataFrame
-
     def AssignColumnNames(self):
         self.myDataFrame.columns = [self.p0, self.p0_perp, self.t0_re, self.t0_im,\
                                     self.z0, self.pf, self.pf_perp, self.orbit,\
                                     'rf', 'rf_perp', 'stability', 'guoy']
+
+    def GetAllColumns(self) -> list:
+        return self.GetDataFrame().columns
+
+    def GetColumnsToDrop(self) -> list:
+        columnsToDrop = []
+        columnsToDrop.append(self.orbit)
+        columnsToDrop.append(self.p0)
+        columnsToDrop.append(self.pf)
+        return columnsToDrop
+
+    def GetTargetColumns(self) -> list:
+        targetColumns = []
+        targetColumns.append(self.orbit)
+        return targetColumns
 
     def FilterByOrbit(self, orbit):
         df = self.myDataFrame
