@@ -1,6 +1,6 @@
 import math
 from Source.MachineLearning.ARC.ImageClassifierHelper import ImageClassifierHelper
-from Source.MachineLearning.ARC.ImageCalculators import AsymCalculator
+from Source.MachineLearning.ARC.AsymCalculator import AsymCalculator
 from Source.Plotters.ContourPlot.ContourDataHelper import ContourDataHelper
 
 
@@ -38,8 +38,10 @@ def GetPathDetailsForTest():
 
 
 def test_GeARCDATAFilePath():
+    _min = 10e-5
+    _max = 10e-2
     path, jobNum, minTask, maxTask, xRange, yRange = GetPathDetailsForTest()
-    helper = AsymCalculator(path, jobNum, minTask, maxTask, xRange, yRange)
+    helper = AsymCalculator(path, jobNum, minTask, maxTask, xRange, yRange, _min, _max)
     filePaths = helper.getFilePaths()
     assert len(filePaths) == 1
     filePath = filePaths[0].GetFilePath()
@@ -48,8 +50,10 @@ def test_GeARCDATAFilePath():
 
 
 def test_AsymmCalc():
+    _min = 10e-5
+    _max = 10e-2
     path, jobNum, minTask, maxTask, xRange, yRange = GetPathDetailsForTest()
-    helper = AsymCalculator(path, jobNum, minTask, maxTask, xRange, yRange)
+    helper = AsymCalculator(path, jobNum, minTask, maxTask, xRange, yRange, _min, _max)
     filePaths = helper.getFilePaths()
     filePath = filePaths[0]
     contourHelper = ContourDataHelper(filePath.path, filePath.filename, xRange, yRange, 0, 0)

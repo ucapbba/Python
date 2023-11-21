@@ -5,7 +5,7 @@
     <ProjectGuid>511734af-1101-43e3-8555-86624a3ee8c1</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Source\Plotters\ContourPlot\Plot_Contour.py</StartupFile>
+    <StartupFile>Source\MachineLearning\ARC\Calc_Assym.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -41,11 +41,13 @@
   <ItemGroup>
     <Compile Include="Source\Base\BaseDataHelper.py" />
     <Compile Include="Source\Base\BasePlotter.py" />
-    <Compile Include="Source\MachineLearning\ARC\ImageCalculators.py" />
-    <Compile Include="Source\MachineLearning\ARC\Predict_Assym.py" />
+    <Compile Include="Source\MachineLearning\ARC\AsymCalculatorIO.py" />
+    <Compile Include="Source\MachineLearning\ARC\AsymCalculator.py" />
+    <Compile Include="Source\MachineLearning\ARC\Calc_Assym.py" />
     <Compile Include="Source\MachineLearning\ARC\ImageClassifierHelper.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Source\MachineLearning\ARC\Model_Asym.py" />
     <Compile Include="Source\MachineLearning\Clustering\ClusteringHelper.py" />
     <Compile Include="Source\MachineLearning\Clustering\RunClustering.py">
       <SubType>Code</SubType>
