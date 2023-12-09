@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "AttoPhysics", "AttoPhysics.pyproj", "{511734AF-1101-43E3-8555-86624A3EE8C1}"
 EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "MLexamples", "MLexamples\MLexamples.pyproj", "{5C09F81C-2FC3-46BD-8575-87E017A39048}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,6 +15,8 @@ Global
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{511734AF-1101-43E3-8555-86624A3EE8C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{511734AF-1101-43E3-8555-86624A3EE8C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C09F81C-2FC3-46BD-8575-87E017A39048}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C09F81C-2FC3-46BD-8575-87E017A39048}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
