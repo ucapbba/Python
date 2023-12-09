@@ -5,7 +5,7 @@
     <ProjectGuid>511734af-1101-43e3-8555-86624a3ee8c1</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>Source\MachineLearning\ARC\Model_Asym.py</StartupFile>
+    <StartupFile>Source\MachineLearning\Clustering\RunClustering.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -13,7 +13,7 @@
     <Name>AttoPhysics</Name>
     <RootNamespace>Python</RootNamespace>
     <IsWindowsApplication>False</IsWindowsApplication>
-    <InterpreterId>Global|ContinuumAnalytics|Anaconda38-64</InterpreterId>
+    <InterpreterId>Global|PythonCore|3.11</InterpreterId>
     <TestFramework>Pytest</TestFramework>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -36,7 +36,7 @@
     <Folder Include="Source\Plotters\" />
   </ItemGroup>
   <ItemGroup>
-    <InterpreterReference Include="Global|ContinuumAnalytics|Anaconda38-64" />
+    <InterpreterReference Include="Global|PythonCore|3.11" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Source\Base\BaseDataHelper.py" />
