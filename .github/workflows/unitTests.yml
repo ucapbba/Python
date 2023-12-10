@@ -12,7 +12,7 @@ jobs:
       
     - name : Install Packages 
       run : |
-        pip install pytest pandas numpy
+        pip install pytest pandas numpy seaborn
         pip install scikit-learn scipy matplotlib
       
     - name : Run unit tests 
