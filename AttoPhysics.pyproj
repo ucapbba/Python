@@ -75,6 +75,7 @@
     <Compile Include="Tests\test_ContourData.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Tests\test_Regression.py" />
     <Compile Include="Tests\test_TrajData.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

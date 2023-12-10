@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>5c09f81c-2fc3-46bd-8575-87e017a39048</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>Classification\MNIST\RunSGDClassifier.py</StartupFile>
+    <StartupFile>Regression\IRIS\PredictIRIS.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -25,13 +25,18 @@
     <Compile Include="Classification\MNIST\MLFunctions.py" />
     <Compile Include="Classification\MNIST\RunSGDClassifier.py" />
     <Compile Include="Classification\MNIST\SaveMNISTdata.py" />
+    <Compile Include="Regression\IRIS\IRISclass.py" />
+    <Compile Include="Regression\IRIS\PredictIRIS.py" />
+    <Compile Include="Tests\test_Regression.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Clustering\" />
     <Folder Include="Clustering\MNIST\" />
     <Folder Include="Classification\" />
     <Folder Include="Classification\MNIST\" />
+    <Folder Include="Tests\" />
     <Folder Include="Regression\" />
+    <Folder Include="Regression\IRIS\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

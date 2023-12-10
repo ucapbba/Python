@@ -30,6 +30,6 @@ class ClusteringHelper(TrajDataHelper):
     def uniqueElements(self, y_pred: ndarray) -> int:
         unique = []
         for element in y_pred:
-            if(element not in unique):
+            if element not in unique:
                 unique.append(element)
         return len(unique)

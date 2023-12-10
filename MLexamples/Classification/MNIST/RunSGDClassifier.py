@@ -1,16 +1,14 @@
-from numpy import ndarray
-from sklearn import model_selection
-from sklearn.linear_model import SGDClassifier
-from Classification.MNIST.DataFunctions import LoadBunchPickle, PrintDataDetails, plotNumber
+from Classification.MNIST.DataFunctions import LoadBunchPickle, PrintDataDetails
 from Classification.MNIST.MLFunctions import MLFunctions
 
-mnistData = LoadBunchPickle("mnist_784.pkl","/Classification/MNIST/") #MUCH faster than CSV
+# MUCH faster than CSV
+mnistData = LoadBunchPickle("mnist_784.pkl", "/Classification/MNIST/")
 data = mnistData["data"]
 numbers = mnistData["target"]
 
 PrintDataDetails(data)
 PrintDataDetails(numbers)
-#for i in range(1,10):
+# for i in range(1,10):
 #    plotNumber(data, numbers, i)
 
 truncate = 10000
@@ -25,4 +23,3 @@ for prediction, y in zip(ML.predictions, ML.y_test):
 
 print("Getting performance measures")
 ML.GetPerformanceMeasures()
-    

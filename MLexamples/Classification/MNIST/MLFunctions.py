@@ -4,14 +4,17 @@ from sklearn.metrics import confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.model_selection import cross_val_score
 from sklearn.model_selection import cross_val_predict
+
+
 class MLFunctions():
     predictions: ndarray
+
     def __init__(self, _images, _numbers, testSize: int):
         self.images = _images
         self.numbers = _numbers
         self.model = SGDClassifier(random_state=42)
         self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(_images, _numbers, test_size=testSize, random_state=42)
-        
+
     def MakePredictions(self, images, numbers):
         self.model.fit(self.X_train, self.y_train)
         self.predictions = self.model.predict(self.X_test)
