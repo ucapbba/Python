@@ -49,6 +49,8 @@
     </Compile>
     <Compile Include="Source\MachineLearning\ARC\Model_Asym.py" />
     <Compile Include="Source\MachineLearning\Clustering\ClusteringHelper.py" />
+    <Compile Include="Source\MachineLearning\Clustering\GlobalClusteringFunctions.py" />
+    <Compile Include="Source\MachineLearning\Clustering\InitialDataAnalyser.py" />
     <Compile Include="Source\MachineLearning\Clustering\RunClustering.py">
       <SubType>Code</SubType>
     </Compile>
@@ -75,7 +77,6 @@
     <Compile Include="Tests\test_ContourData.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Tests\test_Regression.py" />
     <Compile Include="Tests\test_TrajData.py" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />

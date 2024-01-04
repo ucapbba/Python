@@ -15,6 +15,7 @@ class ClusteringHelper(TrajDataHelper):
         # Here we decide which columns NOT to use
         self.myDataFrame = self.myDataFrame.drop([self.t0_re, self.t0_im, self.orbit,\
                                                   'rf', 'rf_perp', 'stability', 'guoy'], axis=1)
+        # self.myDataFrame = self.myDataFrame.drop([self.orbit,'rf', 'rf_perp', 'stability', 'guoy'], axis=1)
 
     def RunClustering(self, _eps: float, _samples: int) -> int:
         self.eps = _eps

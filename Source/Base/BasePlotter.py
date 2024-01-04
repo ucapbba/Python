@@ -1,9 +1,11 @@
+import os
 import string
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
 from Source.Base.BaseDataHelper import BaseDataHelper
 import matplotlib
+import seaborn as sns
 
 
 class BasePlotter():
@@ -11,7 +13,7 @@ class BasePlotter():
     def __init__(self, _helper: BaseDataHelper):
         self.helper = _helper
 
-    def plotScatter(self, col1: string, col2: string, title="", fontsize=15, pointsize=0.001):
+    def plotScatter(self, col1: string, col2: string, title="", fontsize=10, pointsize=0.001, save=False):
         df = self.helper.GetDataFrame()
         dfOrbit = df[self.helper.orbit]
         Xarray = np.asarray(df[col1])
@@ -27,9 +29,10 @@ class BasePlotter():
         legend1 = ax.legend(*scatter.legend_elements(),\
                             loc="upper left", title="Orbit")
         ax.add_artist(legend1)
-        plt.show()
+        self.SaveOrShow(save, title)
+        matplotlib.pyplot.close()
 
-    def plot2Scatter(self, col1: string, col2: string, col3: string, col4: string, title="", fontsize=15):
+    def plot2Scatter(self, col1: string, col2: string, col3: string, col4: string, title="", fontsize=10, pointsize=0.001, save=False):
         df = self.helper.GetDataFrame()
         Xarray = np.asarray(df[col1])
         Yarray = np.asarray(df[col2])
@@ -37,15 +40,18 @@ class BasePlotter():
         Y2array = np.asarray(df[col4])
         fig = plt.figure()
         # fig.canvas.set_window_title(title + " plot")
-        ax1 = fig.add_subplot(221)
-        ax2 = fig.add_subplot(222)
-        ax1.scatter(Xarray, Yarray, s=0.001, color="purple")
-        ax2.scatter(X2array, Y2array, s=0.001, color="purple")
+        ax1 = fig.add_subplot(121)
+        ax2 = fig.add_subplot(122)
+        ax1.scatter(Xarray, Yarray, s=pointsize, color="purple")
+        ax1.set(adjustable='box', aspect='equal')
+        ax2.scatter(X2array, Y2array, s=pointsize, color="purple")
+        ax2.set(adjustable='box', aspect='equal')
         # axis
         ax1.set_xlabel(col1, fontsize=fontsize)
         ax1.set_ylabel(col2, fontsize=fontsize)
         ax2.set_xlabel(col3, fontsize=fontsize)
-        plt.show()
+        # ax2.set_ylabel(col4, fontsize=fontsize)
+        self.SaveOrShow(save, title)
 
     def PlotColourMesh(self, title=""):
         font = {'family': 'serif',
@@ -63,3 +69,16 @@ class BasePlotter():
         ax.set(title=title)
         plt.axis('off')
         plt.show()
+
+    def plotSeaborn(self, title: string = "", save: bool = False) -> np.void:
+        df = self.helper.GetDataFrame()
+        sns.color_palette("pastel")
+        sns.pairplot(df, hue='orbit', kind="reg", plot_kws=dict(scatter_kws=dict(s=0.1)), height=1.5)
+        self.SaveOrShow(save, title)
+
+    def SaveOrShow(self, save: bool, title: string) -> np.void:
+        if save is True:
+            cwd = os.getcwd()
+            plt.savefig(cwd + self.helper.path + title + ".png")
+        else:
+            plt.show()

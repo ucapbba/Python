@@ -1,39 +1,46 @@
-import random
 from Source.MachineLearning.Clustering.ClusteringHelper import ClusteringHelper
-from Source.Base.BasePlotter import BasePlotter
 import copy
+from Source.MachineLearning.Clustering.GlobalClusteringFunctions import LoopClusteringParams, PlotResults
+from Source.MachineLearning.Clustering.GlobalClusteringFunctions import CreateHelpersForOrbits
 
 path = '/Data/'
 filename = 'Binned_Initial_Condition_Grid_trunc1'
-helper = ClusteringHelper(path, filename)
+coreHelper = ClusteringHelper(path, filename)
 
 print("Loading Data " + filename + " ..... ")
-helper.LoadToArray()
-helper.TruncateArray(10000)
-helper.CreateDataFrame()
-helper.AssignColumnNames()
-helper.FilterByOrbit(1)
-helper.DropColumns()
+coreHelper.LoadToArray()
+coreHelper.CreateDataFrame()
+coreHelper.AssignColumnNames()
+# Uncomment to re-save data
+# InitialPlots(coreHelper, pairPoints=10000, scatterPoints=100000)
 
-helpers = []
+MLhelper = copy.deepcopy(coreHelper)
+MLhelper.Truncate(100000)
+MLhelper.path = MLhelper.path + "Clustering/"
+
 # Variables for clustering loop
-minEps = 0.1
-maxEps = 2
-minSamples = 10
-maxSamples = 50
-minClusters = 4
-maxClusters = 8
-print("Running Clustering .....")
-for i in range(1, 50):
-    eps = random.randint(minEps * 10, maxEps * 10) / 10
-    samples = random.randint(minSamples, maxSamples)
-    helperCopy = copy.deepcopy(helper)
-    clusters = helperCopy.RunClustering(eps, samples)
-    if clusters >= minClusters and clusters < maxClusters:
-        helpers.append(helperCopy)
+minEps = 0.01
+maxEps = 3
+minSamples = 25
+maxSamples = 125
+maxRange = 30
 
-print("Plotting .....")
-for helper in helpers:
-    plotter = BasePlotter(helper)
-    plotter.plotScatter(helper.p0, helper.p0_perp, \
-                        "Clustering Resutls - eps = " + str(helper.eps) + " Samples = " + str(helper.samples), 15, 0.5)
+MLhelpers = CreateHelpersForOrbits(MLhelper)
+i = 0
+for helper in MLhelpers:
+    if i < 2:
+        i = i + 1
+        continue
+    if i == 0:
+        orbit = 'All'
+        minClusters = 4
+        maxClusters = 5
+    else:
+        minClusters = 2
+        maxClusters = 4
+        orbit = str(i)
+    print("Running Clustering orbit " + orbit)
+    helpers = LoopClusteringParams(helper, minSamples, maxSamples, minEps, maxEps, minClusters, maxClusters, maxRange)
+    print("Plotting .....")
+    PlotResults(helpers, orbit)
+    i = i + 1

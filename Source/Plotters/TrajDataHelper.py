@@ -1,3 +1,5 @@
+from numpy import void
+from pandas import DataFrame
 from Source.Base.BaseDataHelper import BaseDataHelper
 
 
@@ -19,6 +21,12 @@ class TrajDataHelper(BaseDataHelper):
         self.myDataFrame.columns = [self.p0, self.p0_perp, self.t0_re, self.t0_im,\
                                     self.z0, self.pf, self.pf_perp, self.orbit,\
                                     'rf', 'rf_perp', 'stability', 'guoy']
+
+    def Truncate(self, size: int) -> void:
+        newArray = self.myArray[:size]
+        self.myArray = newArray
+        self.myDataFrame = DataFrame(self.myArray)
+        self.AssignColumnNames()
 
     def GetAllColumns(self) -> list:
         return self.GetDataFrame().columns
